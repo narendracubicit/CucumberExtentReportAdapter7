@@ -199,10 +199,30 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+<!--            <plugin>-->
+<!--                <groupId>net.masterthought</groupId>-->
+<!--                <artifactId>maven-cucumber-reporting</artifactId>-->
+<!--                <version>2.8.0</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>execution</id>-->
+<!--                        <phase>verify</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>generate</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <projectName>Narendra- Overview Features</projectName>-->
+<!--                            <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>-->
+<!--                            <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>-->
+<!--                            <checkBuildResult>false</checkBuildResult>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>net.masterthought</groupId>
                 <artifactId>maven-cucumber-reporting</artifactId>
-                <version>2.8.0</version>
+                <version>5.7.4</version>
                 <executions>
                     <execution>
                         <id>execution</id>
@@ -211,16 +231,18 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>Overview-Features</projectName>
+                            <projectName>Narendra Cucumber - Overview Features</projectName>
                             <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
-                            <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
-<!--                            <skippedFails>true</skippedFails>-->
+                            <inputDirectory>${project.build.directory}</inputDirectory>
+                            <jsonFiles>
+                                <param>**/*.json</param>
+                            </jsonFiles>
+<!--                            <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>-->
                             <checkBuildResult>false</checkBuildResult>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
 
     </build>
