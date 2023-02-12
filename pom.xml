@@ -139,14 +139,6 @@
             <version>3.1.1</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-junit4 -->
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-junit4</artifactId>
-            <version>2.21.0</version>
-            <scope>test</scope>
-        </dependency>
-
         <!-- Reports-->
         <!-- https://mvnrepository.com/artifact/net.masterthought/maven-cucumber-reporting -->
         <dependency>
@@ -169,7 +161,12 @@
             <artifactId>extentreports</artifactId>
             <version>5.0.9</version>
         </dependency>
-
+        <!-- https://mvnrepository.com/artifact/tech.grasshopper/extent-pdf-report -->
+        <dependency>
+            <groupId>tech.grasshopper</groupId>
+            <artifactId>extent-pdf-report</artifactId>
+            <version>2.9.1</version>
+        </dependency>
 
     </dependencies>
 
@@ -186,7 +183,7 @@
                 <configuration>
 <!--                        <testFailureIgnore></testFailureIgnore>-->
 <!--                    <includes>-->
-<!--                        <include>src/test/java/RunCukesTest.java</include>-->
+<!--                        <include>src/test/java/TestRunner.java</include>-->
 <!--                    </includes>-->
 <!--                    <suiteXmlFiles>-->
 <!--                        <suiteXmlFile>src/main/resources/testng.xml</suiteXmlFile>-->
@@ -217,7 +214,8 @@
                             <projectName>Overview-Features</projectName>
                             <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
                             <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
-                            <skippedFails>true</skippedFails>
+<!--                            <skippedFails>true</skippedFails>-->
+                            <checkBuildResult>false</checkBuildResult>
                         </configuration>
                     </execution>
                 </executions>

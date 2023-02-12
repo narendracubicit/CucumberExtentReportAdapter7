@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
                 "junit:target/cucumberreport/cucumber.xml",
                 "html:target/cucumber-reports/cucumberreport.html",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
-        features = "E:\\AutomationRelated\\AutomationCucumber Framework2",
+        features = "src/test/resources/features",
         glue = {"com.narendra.automation"}
 )
 public class TestRunner {
