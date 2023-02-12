@@ -12,6 +12,6 @@ import org.junit.runner.RunWith;
         features = "E:\\AutomationRelated\\AutomationCucumber Framework2",
         glue = {"com.narendra.automation"}
 )
-public class RunCukesTest {
+public class TestRunner {
 
 }
