@@ -35,7 +35,8 @@ public class ReporterClassCucumber {
         System.out.println("Before all hook is called.");
         // initialize the HtmlReporter
         String time = LocalDateTime.now().toString("MMMdd-yyyy-hhmmssa");
-        htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "/target/extent-reports/testReport-" + time + ".html");
+        // htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "/target/extent-reports/testReport-" + time + ".html");
+        htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "/target/testReport.html");
 
         //initialize ExtentReports and attach the HtmlReporter
         extent = new ExtentReports();
