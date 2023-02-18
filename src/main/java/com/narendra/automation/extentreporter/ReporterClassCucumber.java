@@ -3,6 +3,8 @@ package com.narendra.automation.extentreporter;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.narendra.automation.General.Driver;
@@ -22,11 +24,11 @@ import java.util.Calendar;
 public class ReporterClassCucumber {
 
     //ExtentHtmlReporter htmlReporter;
-    static ExtentHtmlReporter htmlReporter;
+    public static ExtentHtmlReporter htmlReporter;
 
-    static ExtentReports extent;
+    public static ExtentReports extent;
     //helps to generate the logs in the test report.
-    static ExtentTest test;
+    public static ExtentTest test;
 
     @BeforeAll
     public static void startReport() {
@@ -43,26 +45,26 @@ public class ReporterClassCucumber {
         htmlReporter.config().setDocumentTitle("Narendra Palla Cucumber Automation Report");
         htmlReporter.config().setReportName("Cucumber Test Report");
         // htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP);
-        htmlReporter.config().setTheme(Theme.STANDARD);
+        htmlReporter.config().setTheme(Theme.DARK);
         // htmlReporter.config().setTimeStampFormat("EEEE, MMMM dd, yyyy, hh:mm a '('zzz')'");
         htmlReporter.config().setTimeStampFormat("MMM dd, yyyy, hh:mm a '('zzz')'");
     }
 
     @Before
     public void beforeEachScenario(Scenario scenario) {
-        test = extent.createTest(scenario.getName(), scenario.getStatus().name());
+        test = extent.createTest(scenario.getName());
     }
 
     @BeforeStep
     public void beforeEachStep(Scenario scenario) {
-        test.log(Status.INFO, "Executing step:: ");
+        test.log(Status.INFO, MarkupHelper.createLabel("Executing step::", ExtentColor.YELLOW));
     }
 
     @AfterStep
     public void afterEachStep(Scenario scenario) throws Exception {
         String imgPathBase64 = attachScreenShot(scenario);
         test.addScreenCaptureFromBase64String(imgPathBase64); // adding at the end of scenario
-        test.log(Status.INFO, "Executed Step::");
+        test.log(Status.INFO, MarkupHelper.createLabel("Executed Step::", ExtentColor.ORANGE));
         String imgTag = "<br></br><img src=\"data:image/gif;base64," + imgPathBase64 + "\" height=\"400\">";
         test.log(Status.INFO, imgTag); // embedded after each step
     }
@@ -70,13 +72,13 @@ public class ReporterClassCucumber {
     @After
     public void afterEachScenario(Scenario scenario) {
         if (scenario.getStatus().name().equals("PASSED")) {
-            test.log(Status.PASS, scenario.getName());
+            test.log(Status.PASS, MarkupHelper.createLabel(scenario.getName(), ExtentColor.GREEN));
         } else if (scenario.getStatus().name().equals("FAILED")) {
-            test.log(Status.FAIL, scenario.getName());
+            test.log(Status.FAIL, MarkupHelper.createLabel(scenario.getName(), ExtentColor.RED));
         } else if (scenario.getStatus().name().equals("PENDING")) {
-            test.log(Status.SKIP, scenario.getName());
+            test.log(Status.SKIP, MarkupHelper.createLabel(scenario.getName(), ExtentColor.ORANGE));
         } else if (scenario.getStatus().name().equals("SKIPPED")) {
-            test.log(Status.SKIP, scenario.getName());
+            test.log(Status.SKIP, MarkupHelper.createLabel(scenario.getName(), ExtentColor.PURPLE));
         }
     }
 
