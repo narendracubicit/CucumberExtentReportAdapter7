@@ -5,7 +5,7 @@ Feature: Gmail Login Feature
     Given I open "https://www.gmail.com"
     When user log into gmail using "username" and "password"
 
-    @Regression @Gmail
+  @Regression @Gmail
   Scenario: Gmail login scenario2
     Given I open "https://www.gmail.com"
     Given I print something

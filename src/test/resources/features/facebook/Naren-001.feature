@@ -6,6 +6,6 @@ Feature: Facebook Login Feature
     When user log into fb using "username" and "password"
 
   @Regression @FB
-  Scenario: FB login scenario 01
+  Scenario: FB login scenario 02
     Given I open "https://www.fb.com"
     Given I print something
