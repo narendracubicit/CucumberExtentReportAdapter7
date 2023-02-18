@@ -9,18 +9,9 @@ import org.testng.Reporter;
 import java.io.IOException;
 
 public class CucumberHooks implements Log4j {
-    public static String caseIdGlobal;
-    public static String scenarioName;
-
-
     public CucumberHooks() {
     }
-
-    @AfterAll
-    public static void afterSuite() {
-
-    }
-
+    /*   Moved to ReporterClassCucumber.java
     @AfterStep
     public static void afterEachStep(Scenario scenario) throws IOException {
 //        scenario.attach(Utilities.getByteScreenshot(), "image/png", scenario.getName());
@@ -37,4 +28,6 @@ public class CucumberHooks implements Log4j {
                 scenario.attach(screenshot, "image/png",scenario.getName());
             }
     }
+
+     */
 }
