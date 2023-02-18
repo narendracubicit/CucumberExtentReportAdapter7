@@ -11,3 +11,6 @@ mvn clean install
 ![image](https://user-images.githubusercontent.com/38005006/218307924-0895fc46-d2d4-4ac9-959e-b5ac4a2d87e4.png)
 ![image](https://user-images.githubusercontent.com/38005006/218305574-b30a24ec-4bee-4a25-ba6b-06630dc6652c.png)
 ![image](https://user-images.githubusercontent.com/38005006/218307651-62c0ce4f-0416-4582-8245-7be03535f8e8.png)
+# CucumberExtentReportAdapter4
+![image](https://user-images.githubusercontent.com/38005006/219125934-3bff83d7-6ef1-48a0-9bf8-5c84ee1c951e.png)
+
