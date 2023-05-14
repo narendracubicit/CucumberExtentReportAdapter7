@@ -8,8 +8,8 @@ import java.util.logging.Logger;
 
 public class Config {
 
-    // Jenkins parameters and mvn commandline args use System.getProperty()
-    // Jenkins config file properties - System.getenv()
+    // mvn commandline args use System.getProperty()
+    // Jenkins parameters and config file properties - System.getenv()
     public static String browser, runTestOnCloud, JIRA_USER, JIRA_PASSWORD, DB_USER, DB_PASSWORD, GRID_URL;
     private static Logger logger = Logger.getLogger(Config.class.getName());
 
@@ -58,44 +58,46 @@ public class Config {
     }
 
     public static void setCommandLineProperties() {
-        if (!getPropertyValue("DB_USER").equals("")) {
-            Config.DB_USER = System.getProperty("DB_USER");
-        }
-        if (!getPropertyValue("DB_PASSWORD").equals("")) {
-            Config.DB_PASSWORD = System.getProperty("DB_PASSWORD");
-        }
-        if (!getPropertyValue("GRID_URL").equals("")) {
-            Config.GRID_URL = System.getProperty("GRID_URL");
+        // overriding values set by config.xlsx or application.properties files
+        if (!getPropertyValue("runtestoncloud").equals("")) {
+            Config.DB_USER = getPropertyValue("runtestoncloud");
         }
         if (!getPropertyValue("DB_USER").equals("")) {
-            Config.DB_USER = System.getProperty("DB_USER");
+            Config.DB_USER = getPropertyValue("DB_USER");
         }
         if (!getPropertyValue("DB_PASSWORD").equals("")) {
-            Config.DB_PASSWORD = System.getProperty("DB_PASSWORD");
+            Config.DB_PASSWORD = getPropertyValue("DB_PASSWORD");
         }
         if (!getPropertyValue("GRID_URL").equals("")) {
-            Config.GRID_URL = System.getProperty("GRID_URL");
+            Config.GRID_URL = getPropertyValue("GRID_URL");
+        }
+        if (!getPropertyValue("jira_user").equals("")) {
+            Config.DB_USER = getPropertyValue("jira_user");
+        }
+        if (!getPropertyValue("jira_pwd").equals("")) {
+            Config.DB_PASSWORD = getPropertyValue("jira_pwd");
         }
     }
 
     public static void setConfigFileProperties() {
-        if (!getJenkinsConfigPropertyValue("DB_USER").equals("")) {
-            Config.DB_USER = System.getProperty("DB_USER");
-        }
-        if (!getJenkinsConfigPropertyValue("DB_PASSWORD").equals("")) {
-            Config.DB_PASSWORD = System.getProperty("DB_PASSWORD");
-        }
-        if (!getJenkinsConfigPropertyValue("GRID_URL").equals("")) {
-            Config.GRID_URL = System.getProperty("GRID_URL");
+        // overriding values set by config.xlsx or application.properties and commandline
+        if (!getJenkinsConfigPropertyValue("runtestoncloud").equals("")) {
+            Config.DB_USER = getJenkinsConfigPropertyValue("runtestoncloud");
         }
         if (!getJenkinsConfigPropertyValue("DB_USER").equals("")) {
-            Config.DB_USER = System.getProperty("DB_USER");
+            Config.DB_USER = getJenkinsConfigPropertyValue("DB_USER");
         }
         if (!getJenkinsConfigPropertyValue("DB_PASSWORD").equals("")) {
-            Config.DB_PASSWORD = System.getProperty("DB_PASSWORD");
+            Config.DB_PASSWORD = getJenkinsConfigPropertyValue("DB_PASSWORD");
         }
         if (!getJenkinsConfigPropertyValue("GRID_URL").equals("")) {
-            Config.GRID_URL = System.getProperty("GRID_URL");
+            Config.GRID_URL = getJenkinsConfigPropertyValue("GRID_URL");
+        }
+        if (!getJenkinsConfigPropertyValue("jira_user").equals("")) {
+            Config.DB_USER = getJenkinsConfigPropertyValue("jira_user");
+        }
+        if (!getJenkinsConfigPropertyValue("jira_pwd").equals("")) {
+            Config.DB_PASSWORD = getJenkinsConfigPropertyValue("jira_pwd");
         }
     }
 

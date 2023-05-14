@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="39.233" tests="4" skipped="0" failures="1" errors="0">
+<testcase classname="Facebook Login Feature" name="FB login scenario 01" time="25.295">
+<failure type="java.lang.AssertionError" message="expected [true] but found [false]">
+<![CDATA[java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.narendra.automation.pages.FbLoginPage.enterLoginCredentials(FbLoginPage.java:17)
+	at com.narendra.automation.stepdefinitions.StepDefinitionsClass.userLogsIntoFB(StepDefinitionsClass.java:36)
+	at ✽.user log into fb using "username" and "password"(file:///E:/AutomationRelated/CucumberExtentReportAdapter7/src/test/resources/features/facebook/Naren-001.feature:6)
+]]>
+</failure>
+<system-out><![CDATA[
+Given I open "https://www.fb.com"...........................................passed
+When user log into fb using "username" and "password".......................failed
+]]></system-out>
+</testcase>
+<testcase classname="Facebook Login Feature" name="FB login scenario 02" time="2.719">
+<system-out><![CDATA[
+Given I open "https://www.fb.com"...........................................passed
+Given I print something.....................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Gmail Login Feature" name="Gmail login scenario1" time="5.393">
+<system-out><![CDATA[
+Given I open "https://www.gmail.com"........................................passed
+When user log into gmail using "username" and "password"....................passed
+]]></system-out>
+</testcase>
+<testcase classname="Gmail Login Feature" name="Gmail login scenario2" time="3.858">
+<system-out><![CDATA[
+Given I open "https://www.gmail.com"........................................passed
+Given I print something.....................................................passed
+]]></system-out>
+</testcase>
+</testsuite>

@@ -8,13 +8,17 @@ import org.openqa.selenium.TakesScreenshot;
 import org.testng.Reporter;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 public class CucumberHooks implements Log4j {
+
+    private static Logger logger = Logger.getLogger(CucumberHooks.class.getName());
     public CucumberHooks() {
     }
 
     @BeforeAll
     public static void setUp() {
+        logger.info("Before all the scenarios");
         Config.loadConfigurations("application.properties");
     }
 

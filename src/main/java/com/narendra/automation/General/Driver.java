@@ -60,6 +60,7 @@ public class Driver {
                 caps.setBrowserName("Firefox");
                 break;
             case "edge":
+            case "MicrosoftEdge":
                 caps.setBrowserName("MicrosoftEdge");
                 break;
         }
