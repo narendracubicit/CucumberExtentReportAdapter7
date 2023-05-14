@@ -84,7 +84,7 @@ public class ReporterClassTestNG {
     }
 
     public static void attachScreenShot(Scenario scenario) throws IOException {
-        File src = ((TakesScreenshot) Driver.createOnlineDriver()).getScreenshotAs(OutputType.FILE);
+        File src = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.FILE);
         byte[] fileContent = FileUtils.readFileToByteArray(src);
         scenario.attach(fileContent, "image/png", scenario.getName());
     }

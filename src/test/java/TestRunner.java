@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = {"pretty",
-                "com.narendra.automation.extentreporter.ReporterClassCucumber",
+                "com.narendra.automation.extentreporter.ReporterClassCucumberForEachScenario",
                 "json:target/cucumber.json",
                 "junit:target/cucumber-reports/cucumber.xml",
                 "html:target/cucumber-reports/cucumberreport.html",

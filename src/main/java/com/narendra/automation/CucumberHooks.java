@@ -1,5 +1,6 @@
 package com.narendra.automation;
 
+import com.narendra.automation.General.Config;
 import com.narendra.automation.General.Driver;
 import io.cucumber.java.*;
 import org.openqa.selenium.OutputType;
@@ -10,6 +11,16 @@ import java.io.IOException;
 
 public class CucumberHooks implements Log4j {
     public CucumberHooks() {
+    }
+
+    @BeforeAll
+    public static void setUp() {
+        Config.loadConfigurations("application.properties");
+    }
+
+    @AfterAll
+    public static void tearDown() {
+        Driver.getDriver().quit();
     }
     /*   Moved to ReporterClassCucumber.java
     @AfterStep

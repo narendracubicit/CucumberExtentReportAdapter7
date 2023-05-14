@@ -16,4 +16,8 @@ public class FbLoginPage extends BasePage {
         webDriver.findElement(loginBtn).click();
         Assert.assertTrue(false);
     }
+
+    public void launchURL(String url) {
+        webDriver.get(url);
+    }
 }
