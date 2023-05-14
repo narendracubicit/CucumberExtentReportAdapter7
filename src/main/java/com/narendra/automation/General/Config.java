@@ -60,7 +60,7 @@ public class Config {
     public static void setCommandLineProperties() {
         // overriding values set by config.xlsx or application.properties files
         if (!getPropertyValue("runtestoncloud").equals("")) {
-            Config.DB_USER = getPropertyValue("runtestoncloud");
+            Config.runTestOnCloud = getPropertyValue("runtestoncloud");
         }
         if (!getPropertyValue("DB_USER").equals("")) {
             Config.DB_USER = getPropertyValue("DB_USER");
@@ -82,7 +82,7 @@ public class Config {
     public static void setConfigFileProperties() {
         // overriding values set by config.xlsx or application.properties and commandline
         if (!getJenkinsConfigPropertyValue("runtestoncloud").equals("")) {
-            Config.DB_USER = getJenkinsConfigPropertyValue("runtestoncloud");
+            Config.runTestOnCloud = getJenkinsConfigPropertyValue("runtestoncloud");
         }
         if (!getJenkinsConfigPropertyValue("DB_USER").equals("")) {
             Config.DB_USER = getJenkinsConfigPropertyValue("DB_USER");
