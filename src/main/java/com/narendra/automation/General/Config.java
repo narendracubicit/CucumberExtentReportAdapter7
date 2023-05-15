@@ -58,58 +58,65 @@ public class Config {
     }
 
     public static void setCommandLineProperties() {
-        // overriding values set by config.xlsx or application.properties files
-        if (!getPropertyValue("runtestoncloud").equals("")) {
-            Config.runTestOnCloud = getPropertyValue("runtestoncloud");
-        }
-        if (!getPropertyValue("DB_USER").equals("")) {
-            Config.DB_USER = getPropertyValue("DB_USER");
-        }
-        if (!getPropertyValue("DB_PASSWORD").equals("")) {
-            Config.DB_PASSWORD = getPropertyValue("DB_PASSWORD");
-        }
-        if (!getPropertyValue("GRID_URL").equals("")) {
-            Config.GRID_URL = getPropertyValue("GRID_URL");
-        }
-        if (!getPropertyValue("jira_user").equals("")) {
-            Config.DB_USER = getPropertyValue("jira_user");
-        }
-        if (!getPropertyValue("jira_pwd").equals("")) {
-            Config.DB_PASSWORD = getPropertyValue("jira_pwd");
-        }
+        String browser = getCommandLinePropertyValue("browser");
+        String runTestOnCloud = getCommandLinePropertyValue("runtestoncloud");
+        String dbUserName = getCommandLinePropertyValue("DB_USER");
+        String dbPassword = getCommandLinePropertyValue("DB_PASSWORD");
+        String gridURL = getCommandLinePropertyValue("GRID_URL");
+        String jiraUser = getCommandLinePropertyValue("jira_user");
+        String jiraPassword = getCommandLinePropertyValue("jira_pwd");
+        // OVERRIDE if the value from jenkins is not empty or null
+        if (StringUtils.isNotEmpty(browser))
+            Config.browser = browser;
+        if (StringUtils.isNotEmpty(runTestOnCloud))
+            Config.runTestOnCloud = runTestOnCloud;
+        if (StringUtils.isNotEmpty(dbUserName))
+            Config.DB_USER = dbUserName;
+        if (StringUtils.isNotEmpty(dbPassword))
+            Config.DB_PASSWORD = dbPassword;
+        if (StringUtils.isNotEmpty(gridURL))
+            Config.GRID_URL = gridURL;
+        if (StringUtils.isNotEmpty(jiraUser))
+            Config.JIRA_USER = jiraUser;
+        if (StringUtils.isNotEmpty(jiraPassword))
+            Config.JIRA_PASSWORD = jiraPassword;
     }
 
     public static void setConfigFileProperties() {
-        // overriding values set by config.xlsx or application.properties and commandline
-        if (!getJenkinsConfigPropertyValue("runtestoncloud").equals("")) {
-            Config.runTestOnCloud = getJenkinsConfigPropertyValue("runtestoncloud");
-        }
-        if (!getJenkinsConfigPropertyValue("DB_USER").equals("")) {
-            Config.DB_USER = getJenkinsConfigPropertyValue("DB_USER");
-        }
-        if (!getJenkinsConfigPropertyValue("DB_PASSWORD").equals("")) {
-            Config.DB_PASSWORD = getJenkinsConfigPropertyValue("DB_PASSWORD");
-        }
-        if (!getJenkinsConfigPropertyValue("GRID_URL").equals("")) {
-            Config.GRID_URL = getJenkinsConfigPropertyValue("GRID_URL");
-        }
-        if (!getJenkinsConfigPropertyValue("jira_user").equals("")) {
-            Config.DB_USER = getJenkinsConfigPropertyValue("jira_user");
-        }
-        if (!getJenkinsConfigPropertyValue("jira_pwd").equals("")) {
-            Config.DB_PASSWORD = getJenkinsConfigPropertyValue("jira_pwd");
-        }
+        // overriding values set by config.xlsx or application.properties and commandline if the value is present in jenkins params
+        String browser = getJenkinsParameterPropertyValue("browser");
+        String runTestOnCloud = getJenkinsParameterPropertyValue("runtestoncloud");
+        String dbUserName = getJenkinsParameterPropertyValue("DB_USER");
+        String dbPassword = getJenkinsParameterPropertyValue("DB_PASSWORD");
+        String gridURL = getJenkinsParameterPropertyValue("GRID_URL");
+        String jiraUser = getJenkinsParameterPropertyValue("jira_user");
+        String jiraPassword = getJenkinsParameterPropertyValue("jira_pwd");
+        // OVERRIDE if the value from jenkins is not empty or null
+        if (StringUtils.isNotEmpty(browser))
+            Config.browser = browser;
+        if (StringUtils.isNotEmpty(runTestOnCloud))
+            Config.runTestOnCloud = runTestOnCloud;
+        if (StringUtils.isNotEmpty(dbUserName))
+            Config.DB_USER = dbUserName;
+        if (StringUtils.isNotEmpty(dbPassword))
+            Config.DB_PASSWORD = dbPassword;
+        if (StringUtils.isNotEmpty(gridURL))
+            Config.GRID_URL = gridURL;
+        if (StringUtils.isNotEmpty(jiraUser))
+            Config.JIRA_USER = jiraUser;
+        if (StringUtils.isNotEmpty(jiraPassword))
+            Config.JIRA_PASSWORD = jiraPassword;
     }
 
-    private static String getPropertyValue(String property) {
+    private static String getCommandLinePropertyValue(String property) {
         String value = System.getProperty(property);
         logger.info("Commandline property - " + property + " value:" + value);
         return StringUtils.isNotEmpty(value) ? value : "";
     }
 
-    private static String getJenkinsConfigPropertyValue(String property) {
+    private static String getJenkinsParameterPropertyValue(String property) {
         String value = System.getenv(property);
-        logger.info("Jenkins Config file property - " + property + " value:" + value);
+        logger.info("Jenkins Params/Config file property - " + property + " value:" + value);
         return StringUtils.isNotEmpty(value) ? value : "";
     }
 }

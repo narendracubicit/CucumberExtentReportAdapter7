@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 public class CucumberHooks implements Log4j {
 
     private static Logger logger = Logger.getLogger(CucumberHooks.class.getName());
+
     public CucumberHooks() {
     }
 
@@ -24,7 +25,8 @@ public class CucumberHooks implements Log4j {
 
     @AfterAll
     public static void tearDown() {
-        Driver.getDriver().quit();
+        if (Driver.getDriver() != null)
+            Driver.getDriver().quit();
     }
     /*   Moved to ReporterClassCucumber.java
     @AfterStep
